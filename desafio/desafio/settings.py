@@ -76,18 +76,12 @@ WSGI_APPLICATION = 'desafio.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-       'default': {
-           'ENGINE': 'djongo',
-           'NAME': 'promotions',
-           'CLIENT': {
-                'host': 'localhost',
-                'port': 27017,
-                'username': 'productListUser',
-                'password': 'productListPassword',
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
 
-            },
-       }
-   }
 
 
 # Password validation
