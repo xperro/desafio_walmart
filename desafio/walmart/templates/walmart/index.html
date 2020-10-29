@@ -49,7 +49,9 @@
                     <div class="price-wrap h5" style="text-align: center">
 
                       {% if palindrome == True %}
-                          <span class="price-new" style="color:darkred">{{product.discount}}</span> <del class="price-old">{{product.price}}</del>
+                          {% if product.discount %} Precio Oferta: {% endif %} <span class="price-new" style="color:darkred">{{product.discount}}</span>
+                          {% if product.discount %} <del class="price-old">{{product.price}}</del>
+                          {% else %} <span class="price-old">{{product.price}}</span> {% endif %}
                       {% else %}
                           <span class="price-new" style="color:black">{{product.price}}</span>
                       {% endif %}
