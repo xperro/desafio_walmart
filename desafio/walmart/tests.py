@@ -82,12 +82,12 @@ class CheckPalindromeFunction(TestCase):
             self.assertEquals(palindrome, True)
             self.assertEquals(len(test3), 35)
             self.assertEquals(condition, False)
+
     def test_integration4(self):
         print("Test integration case 4")
         test4 = helpers.integration_test_function(self.test5)
         palindrome = helpers.CheckPalindrome(str(self.test5))
         condition = False
-
         for product in test4:
             self.assertEquals(palindrome, False)
             self.assertEquals(len(test4), 1)

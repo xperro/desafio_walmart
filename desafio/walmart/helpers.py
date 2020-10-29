@@ -13,6 +13,7 @@ def CheckPalindrome(data):
                 break
         return condition
     return False
+
 #Number Validation
 def isNum(data):
     try:
@@ -20,12 +21,14 @@ def isNum(data):
         return True
     except ValueError:
         return False
+
 #Discount Function
 def discount_promotion(product_list):
     for product in product_list:
         product["discount"] = round(discount(product["price"]))
 def discount(price):
     return round(price / 2)
+
 #Database Connection MongoDB
 def connect():
     db_name = 'promotions'

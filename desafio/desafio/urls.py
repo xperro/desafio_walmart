@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('walmart/', include('walmart.urls', namespace='index')),
+    #path('walmart/', include('walmart.urls', namespace='index')),
+    path('', include('walmart.urls', namespace='index')),
 
 ]
