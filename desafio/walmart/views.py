@@ -1,21 +1,35 @@
 from django.shortcuts import render
-# Create your views here.
-from walmart.models import products
-import pymongo
 from pymongo import MongoClient
-
+import json
+from bson import json_util
 def index(request):
     db_name = 'promotions'
     client = MongoClient('mongodb://productListUser:productListPassword@localhost:27017/')
     db_obj = client[db_name]
     collection = db_obj['products']
-    data = str("ASA")
-    result = CheckPalindrome(data)
-    product_list = list(collection.find({"price":500}))
-    context = {'product':product_list, 'msg': result}
+    print(collection)
+    var = 181
+    data = str(var)
+    result =CheckPalindrome(data)
+    print(result)
+
+    if isNum(var):
+        product_list = list(collection.find({"id": var}))
+
+    else:
+        regex_query = [{"brand": {"$regex": data}},{"description": {"$regex": data}}]
+        product_list = list(collection.find({'$or': regex_query}))
+
+    if result == True:
+        for product in product_list:
+            product["discount"] = round(product["price"]/2)
+
+    context = {
+               'product_list':product_list, 'palindrome': result
+               }
     return render(request, 'walmart/index.html', context)
 
-#Palindrome function to check if data recieved its palindrome (True is palindrome)
+
 def CheckPalindrome(data):
     lenght = len(data)
     condition = True
@@ -26,5 +40,10 @@ def CheckPalindrome(data):
             break
     return condition
 
-
+def isNum(data):
+    try:
+        int(data)
+        return True
+    except ValueError:
+        return False
 

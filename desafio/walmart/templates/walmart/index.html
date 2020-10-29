@@ -15,15 +15,53 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
   <!-- Coded with love by Mutiullah Samim-->
+  <script>
+
+
+
+
+  </script>
   <body>
-    <div class="container h-100">
-      <div class="d-flex justify-content-center h-100">
+  <div class="row" style="margin-top: 50px;margin-bottom: 50px;">
+    <div class="container">
+      <div class="d-flex justify-content-center">
         <div class="searchbar">
           <input class="search_input" type="text" name="" placeholder="Buscar Producto Walmart...">
           <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
 
         </div>
-        <div>{{producto}}</div>
+  </div>
+        <div id="products" style="margin-top: 50px;">
+           <div class="row">
+{% for product in product_list %}
+
+    <div class="col-md-3">
+              <figure class="card card-product">
+                  <div class="img-wrap"><img src="http://{{product.image}}"></div>
+                  <figcaption class="info-wrap">
+                        <p class="desc" style="text-align: center">{{product.brand}}</p>
+                          <p class="desc" style="text-align: center">{{product.description}}</p>
+                  </figcaption>
+                <div class="bottom-wrap">
+                    <div class="price-wrap h5" style="text-align: center">
+
+                      {% if palindrome == True %}
+                          <span class="price-new" style="color:darkred">{{product.discount}}</span> <del class="price-old">{{product.price}}</del>
+                      {% else %}
+                          <span class="price-new" style="color:black">{{product.price}}</span>
+                      {% endif %}
+
+                    </div> <!-- price-wrap.// -->
+                </div> <!-- bottom-wrap.// -->
+            </figure>
+          </div> <!-- col // -->
+{% empty %}
+    Nothing found
+{% endfor %}
+
+
+
+        </div>
       </div>
     </div>
   </body>
