@@ -1,0 +1,31 @@
+version: '3.7'
+volumes:
+  init-db:
+  data-db:
+services:
+  mongodb-local:
+    container_name: 'mongodb-local'
+    restart: always
+    build:
+      context: ./mongo/
+      dockerfile: Dockerfile
+    environment:
+      - MONGODB_CLIENT_EXTRA_FLAGS=--authenticationDatabase=admin
+      - MONGO_INITDB_ROOT_USERNAME=productListUser
+      - MONGO_INITDB_ROOT_PASSWORD=productListPassword
+      - MONGO_INITDB_DATABASE= promotions
+    ports:
+      - 27017:27017
+  mongo-seed:
+    build: ./mongo-seed
+    links:
+      - mongodb-local
+  web:
+    links:
+      - mongo-seed
+    build: ""
+    #command: python manage.py test
+    volumes:
+      - './app/:/usr/src/app/'
+    ports:
+      - 8000:8000

@@ -24,7 +24,7 @@ SECRET_KEY = '0r1x-0la$8)^ir%g*!syxecd9=fbf@_4atq47h(@r13l-w!sm&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1' , 'localhost']
 
 
 # Application definition
@@ -81,6 +81,13 @@ DATABASES = {
     }
 }
 
+MONGODB_DATABASES = {
+    "default": {
+        "name": 'mongodb-local',
+        "host": 'mongo',
+       "port": 27017
+    },
+}
 
 
 # Password validation
@@ -119,7 +126,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/walmart/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, '/walmart/static'),
-    )
+STATIC_URL = '/static/'
+STATICFILES_DIRS = ( os.path.join(BASE_DIR, 'walmart/static'), )
+

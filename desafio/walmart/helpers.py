@@ -33,14 +33,16 @@ def discount(price):
 def connect():
     db_name = 'promotions'
     try:
-        client = MongoClient('mongodb://productListUser:productListPassword@localhost:27017/')
+        client = MongoClient('mongodb://productListUser:productListPassword@mongodb-local:27017')
+        #client = MongoClient('mongodb-local', 27017)
+
         db_obj = client[db_name]
         collection = db_obj['products']
     except pymongo.errors.ServerSelectionTimeoutError as err:
         print(err)
         return False
     return collection
-
+#Complete Test
 def integration_test_function(data):
     collection = connect()
     var = data
@@ -49,7 +51,7 @@ def integration_test_function(data):
 
     if var:
         if isNum(var) == True:
-            product_list = list(collection.find({"id": int(var)}))
+            product_list = list(collection.find({"id": int(var)}).limit(1))
             if result == True:
                 discount_promotion(product_list)
 
