@@ -53,6 +53,8 @@ class CheckPalindromeFunction(TestCase):
 
     def test_integration(self):
         print("Test integration case 1")
+        while helpers.connect() == False:
+            print("Waiting for mongodb connection")
         test1 = helpers.integration_test_function(self.test1)
         palindrome = helpers.CheckPalindrome(str(self.test1))
 
@@ -62,6 +64,8 @@ class CheckPalindromeFunction(TestCase):
 
     def test_integration2(self):
         print("Test integration case 2")
+        while helpers.connect() == False:
+            print("Waiting for mongodb connection")
         test2 = helpers.integration_test_function(self.test2)
         palindrome = helpers.CheckPalindrome(self.test2)
         condition = False
@@ -73,6 +77,8 @@ class CheckPalindromeFunction(TestCase):
 
     def test_integration3(self):
         print("Test integration case 3")
+        while helpers.connect() == False:
+            print("Waiting for mongodb connection")
         test3 = helpers.integration_test_function(self.test3)
         palindrome = helpers.CheckPalindrome(self.test3)
         condition = False
@@ -82,3 +88,16 @@ class CheckPalindromeFunction(TestCase):
             self.assertEquals(palindrome, True)
             self.assertEquals(len(test3), 35)
             self.assertEquals(condition, False)
+
+    def test_integration4(self):
+        print("Test integration case 4")
+        while helpers.connect() == False:
+            print("Waiting for mongodb connection")
+        test4 = helpers.integration_test_function(self.test5)
+        while test4 == '':
+            print("Retry...")
+        palindrome = helpers.CheckPalindrome(str(self.test5))
+        condition = False
+        for product in test4:
+            self.assertEquals(palindrome, False)
+            self.assertEquals(len(test4), 1)

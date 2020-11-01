@@ -24,7 +24,6 @@ services:
     links:
       - mongo-seed
     build: ""
-    #command: python manage.py test
     volumes:
       - './app/:/usr/src/app/'
     ports:

@@ -70,12 +70,10 @@ ENV UWSGI_STATIC_MAP="/static/=/code/static/" UWSGI_STATIC_EXPIRES_URI="/static/
 
 # Change to a non-root user
 USER ${APP_USER}:${APP_USER}
+CMD [ "python", "./manage.py", "runserver", "localhost:8000" ]
 
 # Uncomment after creating your docker-entrypoint.sh
 # ENTRYPOINT ["/code/docker-entrypoint.sh"]
 
 # Start uWSGI
-CMD [ "python", "./manage.py", "runserver", "localhost:8000" ]
-
 CMD ["uwsgi", "--show-config"]
-CMD [ "python", "./manage.py", "test" ]
