@@ -1,9 +1,9 @@
-######DEPLOYING
+######DEPLOYING <h6> tag
 
 ##Use docker-compose up for deploy dockers ready for use app
 
 
-######EXECUTE TESTS
+######EXECUTE TESTS <h6> tag
 
 ##From terminal (Dockers cli of desafio app) run the following command: 
 #python manage.py test
