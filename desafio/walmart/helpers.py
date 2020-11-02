@@ -33,7 +33,7 @@ def discount(price):
 def connect():
     db_name = 'promotions'
     try:
-        client = MongoClient("mongodb+srv://productListUser:productListPassword@cluster0.jiava.mongodb.net/promotions?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://productListUser:productListPassword@cluster0.jiava.mongodb.net/promotions?retryWrites=true&w=majority", ssl=True,ssl_cert_reqs='CERT_NONE')
         #client = MongoClient('mongodb-local', 27017)
 
         db_obj = client[db_name]
