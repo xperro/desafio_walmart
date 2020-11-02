@@ -20,6 +20,7 @@ def index(request):
             return render(request, 'walmart/index.html', context)
 
         else:
+            data = data.lower()
             regex_query = [{"brand": {"$regex": data}},{"description": {"$regex": data}}]
             product_list = list(collection.find({'$or': regex_query}))
 

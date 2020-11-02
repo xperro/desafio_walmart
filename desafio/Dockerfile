@@ -78,4 +78,7 @@ CMD [ "python", "./manage.py", "runserver", "0.0.0.0:${PORT}" ]
 # Start uWSGI
 #CMD ["uwsgi", "--show-config"]
 # run gunicorn
+#CMD python manage.py test
+CMD python manage.py collectstatic
+
 CMD gunicorn desafio.wsgi:application --bind 0.0.0.0:$PORT
