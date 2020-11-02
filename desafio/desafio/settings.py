@@ -24,7 +24,7 @@ SECRET_KEY = '0r1x-0la$8)^ir%g*!syxecd9=fbf@_4atq47h(@r13l-w!sm&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1' , 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1' , 'localhost' , 'app-walmart.herokuapp.com']
 
 
 # Application definition
